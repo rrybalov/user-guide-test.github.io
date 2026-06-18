@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHS Application Support — Get help with a tool</title>
+<link rel="stylesheet" href="acdhs.css">
+<style>
+  .hero{padding:48px 0 8px;}
+  .hero h1{font-size:48px;max-width:760px;}
+  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 14px;}
+  .way{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;}
+  .way .wt{font-weight:700;color:var(--dark-blue);font-size:15px;margin-bottom:3px;}
+  .way .wd{font-size:13px;color:var(--stone);}
+  .way .wn{font-size:12px;font-weight:700;color:var(--blue);background:var(--smoke);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  section.block{margin:34px 0;}
+  .tasks{display:flex;flex-wrap:wrap;gap:10px;}
+  .task{background:var(--white);border:1px solid var(--ash);border-radius:30px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--slate);box-shadow:var(--shadow);}
+  .task:hover{border-color:var(--blue);color:var(--dark-blue);text-decoration:none;}
+  .task .arr{color:var(--light-blue);font-weight:700;}
+  .progs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .prog{display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;font:inherit;font-size:15px;font-weight:700;color:var(--black);cursor:pointer;text-align:left;}
+  .prog svg{width:24px;height:24px;color:var(--blue);flex:none;}
+  .prog:hover,.prog.active{border-color:var(--blue);background:var(--smoke);}
+  .prog.active{box-shadow:0 0 0 3px rgba(38,38,217,.12);}
+  .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{background:var(--white);border:1.5px solid var(--ash);border-radius:30px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;color:var(--slate);cursor:pointer;}
+  .chip:hover{border-color:var(--blue);color:var(--dark-blue);}
+  .chip.active{background:var(--dark-blue);color:#fff;border-color:var(--dark-blue);}
+  .clearx{font-size:13px;font-weight:700;color:var(--blue);background:none;border:none;cursor:pointer;}
+  .toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .tool{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;display:flex;flex-direction:column;gap:6px;color:var(--black);}
+  .tool:hover{border-color:var(--blue);text-decoration:none;transform:translateY(-1px);}
+  .trow{display:flex;justify-content:space-between;align-items:center;}
+  .tname{font-weight:700;font-size:16px;color:var(--dark-blue);}
+  .tcount{background:var(--smoke);border:1px solid var(--ash);border-radius:7px;padding:2px 9px;font-size:12px;font-weight:700;color:var(--stone);}
+  .tdesc{font-size:13.5px;color:var(--slate);margin:0;flex:1;}
+  .tfam{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--stone);}
+  .tool.hide{display:none;}
+  .nores{color:var(--stone);font-size:14px;padding:20px 0;display:none;}
+  @media (max-width:780px){.ways,.progs,.toolgrid{grid-template-columns:1fr;} .hero h1{font-size:34px;}}
+</style></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="brand">Allegheny County DHS <span>· Application Support</span></div>
+  <nav class="nav"><a href="#" class="active">Get help</a><a href="dhs-sitemap.html">Site map</a><a href="#">Accessing apps</a><a href="#">Contact</a></nav>
+</div></div>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">DHS Application Support</p>
+    <h1>Which tool do you need help with?</h1>
+    <p class="lede">Find step-by-step job aids for the DHS software you use. Start by what you're doing, your program area, or the tool's name.</p>
+    <div class="search">
+      <label for="q">Search tools and tasks</label>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="e.g. ANSA, submit a claim, 302, housing enrollment…">
+    </div>
+    <div class="ways">
+      <div class="way"><div class="wn">1</div><div class="wt">Start with a task</div><div class="wd">Pick what you're trying to do and we'll point you to the right tool.</div></div>
+      <div class="way"><div class="wn">2</div><div class="wt">Pick your program area</div><div class="wd">See only the tools used in your line of work.</div></div>
+      <div class="way"><div class="wn">3</div><div class="wt">Browse all tools</div><div class="wd">Know the tool already? Jump straight to its job aids.</div></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Start with what you're doing</h2>
+    <p class="sub">Common tasks across the most-used tools.</p>
+    <div class="tasks"><a class="task" href="ansa-landing.html">Complete a CANS or ANSA assessment <span class="arr">→</span></a><a class="task" href="ansa-landing.html">Find or register a client <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/">Submit a claim or invoice <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/">Report a critical incident <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/">Do a 302 petition <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Manage a housing enrollment <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Document a placement <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Record reentry program outcomes <span class="arr">→</span></a></div>
+  </section>
+
+  <section class="block">
+    <h2>Or pick your program area</h2>
+    <p class="sub">Filters the tool list below to what your team uses.</p>
+    <div class="progs"><button class="prog" data-prog="Child welfare &amp; youth">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg>
+      <span>Child welfare &amp; youth</span></button><button class="prog" data-prog="Behavioral health">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.7-7 10-7 10Z"/></svg>
+      <span>Behavioral health</span></button><button class="prog" data-prog="Housing &amp; homelessness">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></svg>
+      <span>Housing &amp; homelessness</span></button><button class="prog" data-prog="Justice &amp; reentry">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 7v6c0 4 3.4 7 8 8 4.6-1 8-4 8-8V7Z"/></svg>
+      <span>Justice &amp; reentry</span></button><button class="prog" data-prog="Fiscal &amp; claims">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>Fiscal &amp; claims</span></button><button class="prog" data-prog="Assessments">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Assessments</span></button></div>
+  </section>
+
+  <section class="block" id="tools">
+    <div class="toolbar">
+      <h2 style="margin:0">Browse all tools</h2>
+      <div class="chips"><button class="chip" data-family="KIDS">KIDS</button><button class="chip" data-family="Synergy">Synergy</button><button class="chip" data-family="DHS Assessments">DHS Assessments</button><button class="chip" data-family="DHS Applications">DHS Applications</button><button class="clearx" id="clear">Clear filters</button></div>
+    </div>
+    <div class="toolgrid" id="grid"><a class="tool" href="ansa-landing.html" data-family="DHS Assessments" data-progs="Behavioral health|Assessments" data-name="ansa">
+      <div class="trow"><span class="tname">ANSA</span><span class="tcount">8</span></div>
+      <p class="tdesc">Document the Adult Needs &amp; Strengths Assessment.</p>
+      <span class="tfam">DHS Assessments</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/" data-family="DHS Assessments" data-progs="Behavioral health|Assessments" data-name="cans">
+      <div class="trow"><span class="tname">CANS</span><span class="tcount">25</span></div>
+      <p class="tdesc">Document the Child &amp; Adolescent Needs &amp; Strengths Assessment.</p>
+      <span class="tfam">DHS Assessments</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/" data-family="DHS Applications" data-progs="Fiscal &amp; claims" data-name="cips">
+      <div class="trow"><span class="tname">CIPS</span><span class="tcount">18</span></div>
+      <p class="tdesc">Client demographics, services rendered and claims.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/" data-family="DHS Applications" data-progs="" data-name="clientpath">
+      <div class="trow"><span class="tname">ClientPath</span><span class="tcount">3</span></div>
+      <p class="tdesc">Manage clients, referrals and services.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientview/" data-family="DHS Applications" data-progs="" data-name="clientview">
+      <div class="trow"><span class="tname">ClientView</span><span class="tcount">3</span></div>
+      <p class="tdesc">Read-only view of a client&#x27;s DHS involvement.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="courts">
+      <div class="trow"><span class="tname">Courts</span><span class="tcount">16</span></div>
+      <p class="tdesc">Client search, court history and documents for court roles.</p>
+      <span class="tfam">KIDS</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/" data-family="Synergy" data-progs="" data-name="dhs self-sufficiency">
+      <div class="trow"><span class="tname">DHS Self-Sufficiency</span><span class="tcount">29</span></div>
+      <p class="tdesc">Case and referral documentation for the Self-Sufficiency Program.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/" data-family="Synergy" data-progs="Behavioral health" data-name="dragonfly">
+      <div class="trow"><span class="tname">Dragonfly</span><span class="tcount">16</span></div>
+      <p class="tdesc">Consumer info, referrals and technical-assistance tracking.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/" data-family="DHS Assessments" data-progs="Assessments" data-name="fast">
+      <div class="trow"><span class="tname">FAST</span><span class="tcount">4</span></div>
+      <p class="tdesc">View and report on Family Advocacy &amp; Support Tool assessments.</p>
+      <span class="tfam">DHS Assessments</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="family support centers">
+      <div class="trow"><span class="tname">Family Support Centers</span><span class="tcount">25</span></div>
+      <p class="tdesc">Case, group-event and assessment documentation.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/" data-family="DHS Applications" data-progs="Housing &amp; homelessness" data-name="hmis">
+      <div class="trow"><span class="tname">HMIS</span><span class="tcount">21</span></div>
+      <p class="tdesc">Housing enrollments, referrals, units and reporting.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/" data-family="DHS Applications" data-progs="Behavioral health" data-name="ires">
+      <div class="trow"><span class="tname">IRES</span><span class="tcount">3</span></div>
+      <p class="tdesc">Search, create and transfer 302 petitions.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/" data-family="Synergy" data-progs="Child welfare &amp; youth|Behavioral health" data-name="independent living">
+      <div class="trow"><span class="tname">Independent Living</span><span class="tcount">26</span></div>
+      <p class="tdesc">Youth transition plans, contacts and IL stipends.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/integrated-monitoring-tool/" data-family="DHS Applications" data-progs="" data-name="integrated monitoring tool">
+      <div class="trow"><span class="tname">Integrated Monitoring Tool</span><span class="tcount">1</span></div>
+      <p class="tdesc">Provider monitoring overview.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="integration and teaming meeting">
+      <div class="trow"><span class="tname">Integration and Teaming Meeting</span><span class="tcount">12</span></div>
+      <p class="tdesc">Teaming meetings, placement history and referrals.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/" data-family="DHS Applications" data-progs="Justice &amp; reentry" data-name="jail collaborative">
+      <div class="trow"><span class="tname">Jail Collaborative</span><span class="tcount">33</span></div>
+      <p class="tdesc">Reentry intake, program outcomes and reporting.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="kids provider">
+      <div class="trow"><span class="tname">KIDS Provider</span><span class="tcount">57</span></div>
+      <p class="tdesc">Placement, services, fiscal and client health for child-welfare providers.</p>
+      <span class="tfam">KIDS</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/kidstoo-provider/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="kidstoo provider">
+      <div class="trow"><span class="tname">KIDSTOO Provider</span><span class="tcount">8</span></div>
+      <p class="tdesc">Family finding, diligent search and document tracking.</p>
+      <span class="tfam">KIDS</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/" data-family="Synergy" data-progs="Behavioral health|Housing &amp; homelessness" data-name="mh residential">
+      <div class="trow"><span class="tname">MH Residential</span><span class="tcount">36</span></div>
+      <p class="tdesc">Residential referrals, case records and bed management.</p>
+      <span class="tfam">Synergy</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/" data-family="DHS Applications" data-progs="Fiscal &amp; claims" data-name="mper">
+      <div class="trow"><span class="tname">MPER</span><span class="tcount">7</span></div>
+      <p class="tdesc">Submit program-funded claims; manage contacts and facilities.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/" data-family="DHS Applications" data-progs="Behavioral health" data-name="obh critical incident reporting">
+      <div class="trow"><span class="tname">OBH Critical Incident Reporting</span><span class="tcount">5</span></div>
+      <p class="tdesc">Report critical incidents within 24 hours.</p>
+      <span class="tfam">DHS Applications</span>
+    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="youth support partners">
+      <div class="trow"><span class="tname">Youth Support Partners</span><span class="tcount">17</span></div>
+      <p class="tdesc">Case plans, contacts and tracking for youth support.</p>
+      <span class="tfam">Synergy</span>
+    </a></div>
+    <p class="nores" id="nores">No tools match those filters. <button class="clearx" onclick="clearAll()">Clear filters</button></p>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="meta"><b>DHS Application Support</b> · 22 tools · job aids for caseworkers and community providers<br>Allegheny County Department of Human Services</div>
+  <div class="flinks"><a href="dhs-sitemap.html">Site map</a><a href="#">Accessing apps</a><a href="#">Email service desk</a></div>
+</div></footer>
+
+<script>
+  const grid=document.getElementById('grid'), tools=[...grid.querySelectorAll('.tool')];
+  let fam=null, prog=null, q="";
+  function apply(){
+    let shown=0;
+    tools.forEach(t=>{
+      const okF=!fam||t.dataset.family===fam;
+      const okP=!prog||(t.dataset.progs||"").split('|').includes(prog);
+      const okQ=!q||t.dataset.name.includes(q)||t.textContent.toLowerCase().includes(q);
+      const show=okF&&okP&&okQ; t.classList.toggle('hide',!show); if(show)shown++;
+    });
+    document.getElementById('nores').style.display=shown?'none':'block';
+  }
+  document.querySelectorAll('.chip[data-family]').forEach(c=>c.onclick=()=>{
+    const v=c.dataset.family; fam=fam===v?null:v;
+    document.querySelectorAll('.chip[data-family]').forEach(x=>x.classList.toggle('active',x.dataset.family===fam));
+    apply();
+  });
+  document.querySelectorAll('.prog').forEach(p=>p.onclick=()=>{
+    const v=p.dataset.prog; prog=prog===v?null:v;
+    document.querySelectorAll('.prog').forEach(x=>x.classList.toggle('active',x.dataset.prog===prog));
+    document.getElementById('tools').scrollIntoView({behavior:'smooth'}); apply();
+  });
+  document.getElementById('q').addEventListener('input',e=>{q=e.target.value.toLowerCase().trim();apply();});
+  window.clearAll=()=>{fam=null;prog=null;q="";document.getElementById('q').value="";
+    document.querySelectorAll('.active').forEach(x=>x.classList.remove('active'));apply();};
+  document.getElementById('clear').onclick=clearAll;
+</script>
+</body></html>

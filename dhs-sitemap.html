@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHS Application Support — Site Map</title>
+<link rel="stylesheet" href="acdhs.css">
+<style>
+  .hero{padding:42px 0 6px;}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 34px;}
+  .stat{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 22px;min-width:120px;}
+  .stat .n{font-size:30px;font-weight:700;color:var(--dark-blue);line-height:1;}
+  .stat .l{font-size:12px;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-top:6px;}
+  .fam{margin-bottom:40px;}
+  .famhead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:2px solid var(--ash);padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap;}
+  .famname{font-size:22px;font-weight:700;color:var(--dark-blue);}
+  .famdesc{display:block;font-size:14px;color:var(--stone);margin-top:3px;max-width:560px;}
+  .famcount{font-size:13px;font-weight:700;color:var(--blue);white-space:nowrap;}
+  .appgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  details.app{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  details.app>summary{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;}
+  details.app>summary::-webkit-details-marker{display:none;}
+  details.app>summary:hover{background:var(--smoke);}
+  .ahead{flex:1;min-width:0;}
+  .aname{font-weight:700;font-size:15.5px;color:var(--black);display:block;}
+  .ameta{font-size:12px;color:var(--stone);}
+  .abadge{background:var(--smoke);border:1px solid var(--ash);border-radius:9px;padding:6px 10px;text-align:center;font-weight:700;color:var(--dark-blue);font-size:18px;line-height:1;flex:none;}
+  .abadge small{display:block;font-size:9px;color:var(--stone);font-weight:700;letter-spacing:.5px;}
+  .gtag{font-size:10.5px;font-weight:700;border-radius:20px;padding:2px 8px;}
+  .gtag.yes{background:#EAF9F4;color:#067a63;} .gtag.no{background:#FBF3E2;color:#8a6212;}
+  .chev{width:18px;height:18px;stroke:var(--light-blue);flex:none;transition:transform .2s;}
+  details.app[open] .chev{transform:rotate(180deg);}
+  .abody{padding:4px 16px 16px;border-top:1px solid var(--smoke);}
+  ul.secs{list-style:none;margin:10px 0 12px;padding:0;}
+  ul.secs li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--ash);font-size:13.5px;color:var(--slate);}
+  .scount{color:var(--stone);font-weight:700;}
+  .alink{font-size:13px;font-weight:700;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--slate);margin:0 0 22px;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .reorg{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin:8px 0 12px;}
+  .bar{display:grid;grid-template-columns:230px 1fr 32px;align-items:center;gap:12px;margin:7px 0;font-size:13px;}
+  .blabel{color:var(--slate);} .bval{color:var(--stone);font-weight:700;text-align:right;}
+  .btrack{background:var(--smoke);border-radius:6px;height:14px;overflow:hidden;}
+  .bfill{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--light-blue));border-radius:6px;}
+  @media (max-width:680px){.appgrid{grid-template-columns:1fr;} .bar{grid-template-columns:140px 1fr 28px;}}
+  @media print{.topbar{position:static;} details.app[open] .abody,details.app .abody{display:block;} details.app>summary .chev{display:none;}}
+</style></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="brand">Allegheny County DHS <span>· Application Support</span></div>
+  <nav class="nav"><a href="#">Site map</a><a href="home-redesign.html">Home redesign</a><a href="ansa-landing.html">ANSA redesign</a></nav>
+</div></div>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Information architecture</p>
+    <h1>DHS Application Support — site map</h1>
+    <p class="lede">Every application on dhsapplicationsupport.alleghenycounty.us, grouped by platform family, with the job aids each one carries. Crawled June 2026.</p>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="n">22</div><div class="l">Applications</div></div>
+    <div class="stat"><div class="n">373</div><div class="l">Job aids</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Platform families</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">With version / date shown</div></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#05DEB4"></span> Already groups its job aids</span>
+    <span><span class="dot" style="background:#EDCA91"></span> Flat alphabetical list (no task hierarchy)</span>
+    <span>Tap any application to see its on-site sections.</span>
+  </div>
+
+  
+    <section class="fam">
+      <div class="famhead">
+        <div><span class="famname">KIDS</span><span class="famdesc">Child welfare case management and its court and KIDSTOO modules.</span></div>
+        <div class="famcount">3 apps · 81 job aids</div>
+      </div>
+      <div class="appgrid">
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Courts</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">16<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">16</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">KIDS Provider</span>
+              <span class="ameta"><span class="gtag yes">5 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">57<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Getting Started</span><span class="scount">1</span></li><li><span class="sname">Placement Job Aids</span><span class="scount">19</span></li><li><span class="sname">Non Placement Job Aids</span><span class="scount">14</span></li><li><span class="sname">Fiscal &amp; Admin Job Aids</span><span class="scount">13</span></li><li><span class="sname">Client Health &amp; Education Job Aids</span><span class="scount">10</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">KIDSTOO Provider</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">8<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">8</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/kidstoo-provider/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details></div>
+    </section>
+    <section class="fam">
+      <div class="famhead">
+        <div><span class="famname">Synergy</span><span class="famdesc">Shared Synergy platform powering program-specific case and referral apps.</span></div>
+        <div class="famcount">7 apps · 161 job aids</div>
+      </div>
+      <div class="appgrid">
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">DHS Self-Sufficiency</span>
+              <span class="ameta"><span class="gtag yes">3 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">29<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Case Job Aids</span><span class="scount">14</span></li><li><span class="sname">Referral Job Aids</span><span class="scount">8</span></li><li><span class="sname">Common Screens &amp; Quick Reference</span><span class="scount">7</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Dragonfly</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">16<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">16</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Family Support Centers</span>
+              <span class="ameta"><span class="gtag yes">4 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">25<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Case Job Aids</span><span class="scount">13</span></li><li><span class="sname">Common Screens</span><span class="scount">5</span></li><li><span class="sname">Plans and Assessments</span><span class="scount">3</span></li><li><span class="sname">Admin and Utility Screens</span><span class="scount">4</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Independent Living</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">26<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">26</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Integration and Teaming Meeting</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">12<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">12</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">MH Residential</span>
+              <span class="ameta"><span class="gtag yes">3 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">36<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Referral Job Aids</span><span class="scount">20</span></li><li><span class="sname">Case Job Aids</span><span class="scount">14</span></li><li><span class="sname">MH Residential Forms</span><span class="scount">2</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Youth Support Partners</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">17<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">17</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details></div>
+    </section>
+    <section class="fam">
+      <div class="famhead">
+        <div><span class="famname">DHS Assessments</span><span class="famdesc">Standardized needs-and-strengths assessment tools (CANS, ANSA, FAST).</span></div>
+        <div class="famcount">3 apps · 37 job aids</div>
+      </div>
+      <div class="appgrid">
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">ANSA</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">8<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">8</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/ansa/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">CANS</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">25<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">25</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">FAST</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">4<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">4</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details></div>
+    </section>
+    <section class="fam">
+      <div class="famhead">
+        <div><span class="famname">DHS Applications</span><span class="famdesc">Standalone applications for behavioral health, housing, fiscal and emergency services.</span></div>
+        <div class="famcount">9 apps · 94 job aids</div>
+      </div>
+      <div class="appgrid">
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">CIPS</span>
+              <span class="ameta"><span class="gtag yes">2 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">18<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">16</span></li><li><span class="sname">Training</span><span class="scount">2</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">ClientPath</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">3<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">3</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">ClientView</span>
+              <span class="ameta"><span class="gtag yes">2 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">3<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">2</span></li><li><span class="sname">Training</span><span class="scount">1</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientview/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">HMIS</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">21<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">21</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">IRES</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">3<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">3</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Integrated Monitoring Tool</span>
+              <span class="ameta"><span class="gtag no">flat A–Z list</span> · Okta</span>
+            </span>
+            <span class="abadge">1<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">1</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/integrated-monitoring-tool/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">Jail Collaborative</span>
+              <span class="ameta"><span class="gtag yes">2 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">33<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">IT and Practices Guides</span><span class="scount">4</span></li><li><span class="sname">Jail Collaborative Job Aids</span><span class="scount">29</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">MPER</span>
+              <span class="ameta"><span class="gtag yes">2 sections</span> · Okta</span>
+            </span>
+            <span class="abadge">7<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Program Funded Job Aids</span><span class="scount">3</span></li><li><span class="sname">MPER Job Aids</span><span class="scount">4</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details>
+        <details class="app">
+          <summary>
+            <span class="ahead">
+              <span class="aname">OBH Critical Incident Reporting</span>
+              <span class="ameta"><span class="gtag yes">2 sections</span> · Online form (no Okta)</span>
+            </span>
+            <span class="abadge">5<small>aids</small></span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="abody">
+            <ul class="secs"><li><span class="sname">Job Aids</span><span class="scount">3</span></li><li><span class="sname">Training</span><span class="scount">2</span></li></ul>
+            <a class="alink" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/" target="_blank" rel="noopener">Open landing page ↗</a>
+          </div>
+        </details></div>
+    </section>
+
+  <section class="fam">
+    <div class="famhead"><div><span class="famname">If reorganized by task</span><span class="famdesc">The same 373 job aids mapped to a proposed cross-app task taxonomy — what users actually come to do.</span></div></div>
+    <div class="reorg"><div class="bar"><span class="blabel">Case &amp; service documentation</span><span class="btrack"><span class="bfill" style="width:100%"></span></span><span class="bval">167</span></div><div class="bar"><span class="blabel">Referrals &amp; placement</span><span class="btrack"><span class="bfill" style="width:21%"></span></span><span class="bval">35</span></div><div class="bar"><span class="blabel">Document an assessment</span><span class="btrack"><span class="bfill" style="width:16%"></span></span><span class="bval">26</span></div><div class="bar"><span class="blabel">Fiscal, claims &amp; invoicing</span><span class="btrack"><span class="bfill" style="width:14%"></span></span><span class="bval">24</span></div><div class="bar"><span class="blabel">Reports &amp; history</span><span class="btrack"><span class="bfill" style="width:13%"></span></span><span class="bval">21</span></div><div class="bar"><span class="blabel">Supervisor &amp; approvals</span><span class="btrack"><span class="bfill" style="width:9%"></span></span><span class="bval">15</span></div><div class="bar"><span class="blabel">Plans &amp; meetings</span><span class="btrack"><span class="bfill" style="width:9%"></span></span><span class="bval">15</span></div><div class="bar"><span class="blabel">Enrollment &amp; households</span><span class="btrack"><span class="bfill" style="width:9%"></span></span><span class="bval">15</span></div><div class="bar"><span class="blabel">Find &amp; register a client</span><span class="btrack"><span class="bfill" style="width:8%"></span></span><span class="bval">13</span></div><div class="bar"><span class="blabel">Reference, FAQs &amp; training</span><span class="btrack"><span class="bfill" style="width:8%"></span></span><span class="bval">13</span></div><div class="bar"><span class="blabel">Program outcomes</span><span class="btrack"><span class="bfill" style="width:8%"></span></span><span class="bval">13</span></div><div class="bar"><span class="blabel">Admin &amp; configuration</span><span class="btrack"><span class="bfill" style="width:5%"></span></span><span class="bval">9</span></div><div class="bar"><span class="blabel">Getting access &amp; signing in</span><span class="btrack"><span class="bfill" style="width:2%"></span></span><span class="bval">4</span></div><div class="bar"><span class="blabel">302 petitions</span><span class="btrack"><span class="bfill" style="width:2%"></span></span><span class="bval">3</span></div></div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="meta"><b>DHS Application Support — site map</b> · 22 applications · 373 job aids · crawled June 2026<br>Allegheny County Department of Human Services</div>
+  <div class="flinks"><a href="home-redesign.html">Home redesign</a><a href="ansa-landing.html">ANSA redesign</a></div>
+</div></footer>
+</body></html>
