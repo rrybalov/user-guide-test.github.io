@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANSA — Adult Needs and Strengths Assessment</title>
+<link rel="stylesheet" href="acdhs.css">
+
+<style>
+  .notice{background:var(--yellow);color:#5c4112;}
+  .notice .wrap-narrow{display:flex;align-items:center;gap:10px;padding:9px 24px;font-size:13.5px;font-weight:700;}
+  .notice .dot{width:8px;height:8px;border-radius:50%;background:#8a6212;flex:none;}
+  .notice a{color:#5c4112;text-decoration:underline;}
+  .hero{padding:34px 0 8px;}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 30px;}
+  .panel{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;}
+  .panel h3{margin:0 0 10px;font-size:15px;font-weight:700;color:var(--dark-blue);letter-spacing:.2px;}
+  .panel ul{margin:0;padding-left:18px;color:var(--slate);font-size:15px;}
+  .panel ul li{margin-bottom:7px;}
+  .panel p{margin:0;color:var(--slate);font-size:15px;}
+  .access{display:flex;gap:16px;align-items:flex-start;background:var(--white);border:1px solid var(--ash);border-left:5px solid var(--light-blue);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 24px;margin:0 0 38px;}
+  .access .ic{width:40px;height:40px;border-radius:10px;background:#EEF0FB;display:flex;align-items:center;justify-content:center;flex:none;}
+  .access .ic svg{width:21px;height:21px;stroke:var(--blue);}
+  .access h3{margin:0 0 4px;font-size:16px;color:var(--dark-blue);}
+  .access p{margin:0;color:var(--slate);font-size:15px;}
+  .access .corr{margin-top:8px;font-size:13.5px;color:#8a6212;background:#FBF3E2;border-radius:8px;padding:8px 12px;}
+  .buckets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+  .bucket{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s,border-color .12s;}
+  a.bucket:hover{transform:translateY(-2px);border-color:var(--light-blue);box-shadow:0 6px 22px rgba(18,18,33,.10);text-decoration:none;}
+  .bucket .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .bucket .bt{font-size:17px;font-weight:700;color:var(--dark-blue);}
+  .bucket .count{font-size:12px;font-weight:700;color:var(--stone);background:var(--smoke);border:1px solid var(--ash);border-radius:20px;padding:3px 10px;}
+  .bucket .bd{font-size:14px;color:var(--slate);margin-bottom:12px;}
+  .bucket .aids{font-size:13px;color:var(--stone);margin-top:auto;}
+  .bucket .aids span{display:inline-block;background:var(--smoke);border:1px solid var(--ash);border-radius:6px;padding:2px 8px;margin:0 5px 5px 0;color:var(--slate);}
+  .bucket .go{margin-top:12px;font-size:13.5px;font-weight:700;color:var(--blue);}
+  .bucket.soon .go{color:var(--stone);}
+  .bucket.feat{border-color:var(--light-blue);}
+  .tasklist{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+  .task{display:flex;gap:16px;align-items:flex-start;background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;text-decoration:none;color:inherit;transition:transform .12s,border-color .12s;}
+  a.task:hover{transform:translateY(-2px);border-color:var(--light-blue);text-decoration:none;}
+  .task .num{width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .task .tt{font-size:17px;font-weight:700;color:var(--dark-blue);margin:0 0 3px;}
+  .task .td{font-size:14.5px;color:var(--slate);margin:0;}
+  .task .meta{margin-top:9px;display:flex;gap:8px;align-items:center;}
+  .task .go{margin-left:auto;align-self:center;color:var(--light-blue);font-weight:700;font-size:20px;}
+  /* steps + result + recovery (shared with guide pages) */
+  section.block{margin-bottom:40px;}
+  ol.steps{margin:0;padding-left:0;counter-reset:step;list-style:none;}
+  ol.steps li{position:relative;padding:0 0 18px 44px;counter-increment:step;font-size:15.5px;color:var(--black);}
+  ol.steps li::before{content:counter(step);position:absolute;left:0;top:-2px;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  ol.steps li b{color:var(--black);}
+  ol.steps li span{display:block;color:var(--stone);font-size:13.5px;margin-top:2px;}
+  .results{display:flex;flex-direction:column;gap:10px;}
+  .res{background:var(--white);border:1px solid var(--ash);border-radius:10px;padding:15px 18px;display:flex;gap:14px;align-items:flex-start;}
+  .res .rt{font-size:15px;font-weight:700;color:var(--black);margin:0 0 2px;}
+  .res p{margin:0;font-size:14.5px;color:var(--slate);}
+  .res p b{color:var(--dark-blue);}
+  .recover{border:1px solid var(--ash);border-radius:10px;overflow:hidden;}
+  .recover .rh{background:var(--dark-blue);color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:11px 16px;display:flex;align-items:center;gap:9px;}
+  .recover table{width:100%;border-collapse:collapse;font-size:14px;}
+  .recover td{padding:11px 16px;border-top:1px solid var(--ash);vertical-align:top;color:var(--slate);}
+  .recover tr td:first-child{font-weight:700;color:var(--black);width:38%;}
+  .recover .yes{display:inline-block;font-weight:700;color:var(--dark-blue);background:#EAF9F4;padding:2px 9px;border-radius:6px;font-size:12.5px;}
+  .recover .chk{display:inline-block;font-weight:700;color:#8a6212;background:#FBF3E2;padding:2px 9px;border-radius:6px;font-size:12.5px;}
+  .contacts{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:34px;}
+  .contacts .row{display:flex;gap:18px;padding:13px 22px;border-top:1px solid var(--smoke);font-size:15px;}
+  .contacts .row:first-of-type{border-top:none;}
+  .contacts dt{flex:0 0 190px;font-weight:700;color:var(--dark-blue);margin:0;}
+  .contacts dd{margin:0;color:var(--slate);}
+  .report{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:14px;margin-bottom:10px;box-shadow:var(--shadow);}
+  .report .ic{width:38px;height:38px;border-radius:9px;background:#FCEDEC;display:flex;align-items:center;justify-content:center;flex:none;}
+  .report .ic svg{width:20px;height:20px;stroke:#c0564f;}
+  .report b{display:block;font-size:15px;color:var(--black);}
+  .report p{margin:1px 0 0;font-size:13.5px;color:var(--stone);}
+  .report .btn{margin-left:auto;}
+  .why{font-size:15px;color:var(--slate);background:var(--smoke);border:1px solid var(--ash);border-radius:10px;padding:14px 18px;margin:0 0 22px;}
+  .why b{color:var(--dark-blue);}
+  @media (max-width:680px){
+    .twocol,.buckets{grid-template-columns:1fr;}
+    .report{flex-wrap:wrap;} .report .btn{margin-left:0;width:100%;}
+    .contacts dt{flex-basis:130px;} .access{flex-wrap:wrap;}
+  }
+</style>
+
+</head><body>
+<div class="topbar"><div class="wrap-narrow">
+  <div class="brand">Allegheny County DHS <span>· Application Support</span></div>
+  <nav class="nav" aria-label="Sections"><a href="dhs-sitemap.html">Site map</a><a href="home-redesign.html">Get help</a><a href="ansa-landing.html" class="active">ANSA</a></nav>
+</div></div><div class="notice"><div class="wrap-narrow">
+  <span class="dot" aria-hidden="true"></span><span>This is a redesign concept. The “Find &amp; register a client” bucket is fully built out as the worked example; the others are placeholders.</span>
+</div></div><main class="wrap-narrow">
+  <div class="crumb"><a href="dhs-sitemap.html">All tools</a> › <a href="#">DHS Assessments</a> › <b>ANSA</b></div>
+  <section class="hero">
+    <p class="eyebrow">DHS Assessments · Tool guide</p>
+    <h1>ANSA</h1>
+    <p class="lede">The Adult Needs and Strengths Assessment. These guides walk providers through finding a client, documenting the assessment, and pulling reports — organized by the task you’re trying to do, not by file name.</p>
+    <div class="trust"><div><div class="k">Tool</div><div class="v">ANSA in Synergy</div></div><div><div class="k">Access</div><div class="v">Okta</div></div><div><div class="k">Last reviewed</div><div class="v">Mixed — see guides</div></div><div><div class="k">Status</div><div class="v warn">Needs review</div></div></div>
+  </section>
+
+  <section class="block">
+    <div class="twocol">
+      <div class="panel">
+        <h3>What ANSA does</h3>
+        <p>ANSA is a structured assessment that captures an adult’s needs <em>and</em> strengths across life domains. Providers complete it in the assessment system to support service planning and to share a consistent picture of the person across DHS.</p>
+      </div>
+      <div class="panel">
+        <h3>Who it helps</h3>
+        <ul>
+          <li><b>Adult-serving DHS providers</b> completing or updating an ANSA.</li>
+          <li><b>CYF providers</b> who use the ANSA/CANS overview and reports.</li>
+          <li><b>Supervisors</b> reviewing assessment history and reports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="access">
+      <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 8.6-8.6"/><path d="m17 5 2.5 2.5"/><path d="m14 8 2.5 2.5"/></svg></div>
+      <div>
+        <h3>How to get access</h3>
+        <p>Sign in through <b>Okta</b> with your county credentials and open the assessment tile. New to ANSA? Request access through the ISAR form first, then look for the tile in Okta.</p>
+        <div class="corr">Heads up: some current job aids still open with the older <b>KIDS</b> login screen. Access is now through Okta — that mismatch is exactly why these guides are flagged “needs review.”</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Get help by task</h2>
+    <p class="sub">Pick what you’re trying to do. Each bucket holds the guides for that task — the same PDFs, regrouped and rewritten.</p>
+    <div class="buckets"><a class="bucket soon" href="#">
+      <div class="top"><span class="bt">Get started in ANSA</span><span class="count">2 guides</span></div>
+      <div class="bd">Orient to the ANSA screens before you begin your first assessment.</div>
+      <div class="aids"><span>Overview (DHS)</span><span>Overview screen (CYF)</span></div>
+      <div class="go">Example placeholder</div>
+    </a><a class="bucket feat" href="ansa-tasks-client.html">
+      <div class="top"><span class="bt">Find &amp; register a client</span><span class="count">2 guides</span></div>
+      <div class="bd">Locate an existing client or add a new one — without creating a duplicate record.</div>
+      <div class="aids"><span>Client search</span><span>Client registration</span></div>
+      <div class="go">Open these guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></div>
+    </a><a class="bucket soon" href="#">
+      <div class="top"><span class="bt">Document an assessment</span><span class="count">2 guides</span></div>
+      <div class="bd">Complete the comprehensive ANSA and record provider involvement.</div>
+      <div class="aids"><span>ANSA comprehensive</span><span>Provider involvement</span></div>
+      <div class="go">Example placeholder</div>
+    </a><a class="bucket soon" href="#">
+      <div class="top"><span class="bt">Reports &amp; history</span><span class="count">2 guides</span></div>
+      <div class="bd">Pull assessment reports and review a client’s prior assessments.</div>
+      <div class="aids"><span>Assessment reports (DHS)</span><span>Assessment reports (CYF)</span></div>
+      <div class="go">Example placeholder</div>
+    </a></div>
+  </section>
+</main><footer><div class="wrap-narrow">
+  <div class="meta"><b>ANSA</b> · DHS Assessments · Redesign concept · Maintained by Application Support<br>Allegheny County Department of Human Services</div>
+  <div class="flinks"><a href="ansa-landing.html">ANSA home</a><a href="dhs-sitemap.html">All tools</a><a href="#">Contact us</a></div>
+</div></footer></body></html>
