@@ -4,40 +4,47 @@
 <title>DHS Application Support — Get help with a tool</title>
 <link rel="stylesheet" href="acdhs.css">
 <style>
-  .hero{padding:48px 0 8px;}
-  .hero h1{font-size:48px;max-width:760px;}
-  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 14px;}
-  .way{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;}
-  .way .wt{font-weight:700;color:var(--dark-blue);font-size:15px;margin-bottom:3px;}
-  .way .wd{font-size:13px;color:var(--stone);}
-  .way .wn{font-size:12px;font-weight:700;color:var(--blue);background:var(--smoke);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
-  section.block{margin:34px 0;}
-  .tasks{display:flex;flex-wrap:wrap;gap:10px;}
-  .task{background:var(--white);border:1px solid var(--ash);border-radius:30px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--slate);box-shadow:var(--shadow);}
-  .task:hover{border-color:var(--blue);color:var(--dark-blue);text-decoration:none;}
-  .task .arr{color:var(--light-blue);font-weight:700;}
-  .progs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-  .prog{display:flex;align-items:center;gap:12px;background:var(--white);border:1.5px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;font:inherit;font-size:15px;font-weight:700;color:var(--black);cursor:pointer;text-align:left;}
-  .prog svg{width:24px;height:24px;color:var(--blue);flex:none;}
-  .prog:hover,.prog.active{border-color:var(--blue);background:var(--smoke);}
-  .prog.active{box-shadow:0 0 0 3px rgba(38,38,217,.12);}
-  .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  html{scroll-behavior:smooth;}
+  .hero{padding:46px 0 6px;} .hero h1{max-width:720px;}
+  .controls{position:sticky;top:60px;z-index:15;background:linear-gradient(var(--smoke) 78%,rgba(245,245,255,0));padding:14px 0 12px;}
+  .search{margin-bottom:12px;}
+  .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .filters .flab{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--stone);margin-right:2px;}
   .chip{background:var(--white);border:1.5px solid var(--ash);border-radius:30px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;color:var(--slate);cursor:pointer;}
   .chip:hover{border-color:var(--blue);color:var(--dark-blue);}
   .chip.active{background:var(--dark-blue);color:#fff;border-color:var(--dark-blue);}
-  .clearx{font-size:13px;font-weight:700;color:var(--blue);background:none;border:none;cursor:pointer;}
-  .toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-  .tool{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;display:flex;flex-direction:column;gap:6px;color:var(--black);}
-  .tool:hover{border-color:var(--blue);text-decoration:none;transform:translateY(-1px);}
-  .trow{display:flex;justify-content:space-between;align-items:center;}
-  .tname{font-weight:700;font-size:16px;color:var(--dark-blue);}
-  .tcount{background:var(--smoke);border:1px solid var(--ash);border-radius:7px;padding:2px 9px;font-size:12px;font-weight:700;color:var(--stone);}
-  .tdesc{font-size:13.5px;color:var(--slate);margin:0;flex:1;}
-  .tfam{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--stone);}
-  .tool.hide{display:none;}
-  .nores{color:var(--stone);font-size:14px;padding:20px 0;display:none;}
-  @media (max-width:780px){.ways,.progs,.toolgrid{grid-template-columns:1fr;} .hero h1{font-size:34px;}}
+  .areanav{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 30px;}
+  .areapill{background:var(--white);border:1px solid var(--ash);border-radius:30px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--slate);box-shadow:var(--shadow);}
+  .areapill:hover{border-color:var(--blue);color:var(--dark-blue);text-decoration:none;}
+  .area{margin:0 0 34px;scroll-margin-top:150px;}
+  .areahead{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--ash);padding-bottom:12px;margin-bottom:16px;}
+  .aicon{width:42px;height:42px;border-radius:11px;background:#EEF0FB;display:flex;align-items:center;justify-content:center;flex:none;}
+  .aicon svg{width:22px;height:22px;color:var(--blue);}
+  .areahead h2{margin:0;font-size:22px;}
+  .acount{font-size:13px;color:var(--stone);font-weight:700;}
+  .toolgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  details.tool{background:var(--white);border:1px solid var(--ash);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  details.tool[open]{border-color:var(--light-blue);}
+  .thead{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;list-style:none;}
+  .thead::-webkit-details-marker{display:none;}
+  .thead:hover{background:var(--smoke);}
+  .tmain{flex:1;min-width:0;}
+  .tname{display:block;font-weight:700;font-size:16px;color:var(--dark-blue);}
+  .tdesc{display:block;font-size:13.5px;color:var(--slate);margin-top:2px;}
+  .tright{display:flex;align-items:center;gap:12px;flex:none;}
+  .tcount{background:var(--smoke);border:1px solid var(--ash);border-radius:8px;padding:5px 9px;text-align:center;font-weight:700;color:var(--dark-blue);font-size:16px;line-height:1;}
+  .tcount small{display:block;font-size:9px;color:var(--stone);font-weight:700;letter-spacing:.4px;}
+  .chev{width:18px;height:18px;stroke:var(--light-blue);transition:transform .2s;}
+  details.tool[open] .chev{transform:rotate(180deg);}
+  .topen{padding:4px 18px 18px;border-top:1px solid var(--smoke);}
+  .topen .btn.primary{display:inline-block;margin:14px 0 14px;}
+  .jump .jlab{display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--stone);margin-bottom:8px;}
+  .jlinks{display:flex;flex-wrap:wrap;gap:8px;}
+  .jlinks a{background:var(--smoke);border:1px solid var(--ash);border-radius:8px;padding:8px 12px;font-size:13.5px;font-weight:500;color:var(--slate);}
+  .jlinks a:hover{border-color:var(--blue);color:var(--dark-blue);background:var(--white);text-decoration:none;}
+  .tool.hide{display:none;} .area.hide{display:none;}
+  .nores{display:none;color:var(--stone);font-size:15px;padding:24px 0;}
+  @media (max-width:760px){.toolgrid{grid-template-columns:1fr;} .hero h1{font-size:34px;} .controls{top:56px;}}
 </style></head>
 <body>
 <div class="topbar"><div class="wrap">
@@ -49,172 +56,339 @@
   <section class="hero">
     <p class="eyebrow">DHS Application Support</p>
     <h1>Which tool do you need help with?</h1>
-    <p class="lede">Find step-by-step job aids for the DHS software you use. Start by what you're doing, your program area, or the tool's name.</p>
+    <p class="lede">Find step-by-step guides for the DHS software you use. Jump to your program area, filter by platform, or search — then open a tool to go straight to the task you need.</p>
+  </section>
+
+  <div class="controls">
     <div class="search">
-      <label for="q">Search tools and tasks</label>
+      <label for="q" class="sr">Search tools</label>
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="e.g. ANSA, submit a claim, 302, housing enrollment…">
+      <input id="q" type="search" placeholder="Search a tool or task — e.g. ANSA, claim, 302, enrollment…">
     </div>
-    <div class="ways">
-      <div class="way"><div class="wn">1</div><div class="wt">Start with a task</div><div class="wd">Pick what you're trying to do and we'll point you to the right tool.</div></div>
-      <div class="way"><div class="wn">2</div><div class="wt">Pick your program area</div><div class="wd">See only the tools used in your line of work.</div></div>
-      <div class="way"><div class="wn">3</div><div class="wt">Browse all tools</div><div class="wd">Know the tool already? Jump straight to its job aids.</div></div>
-    </div>
-  </section>
+    <div class="filters"><span class="flab">Platform</span><button class="chip active" data-family="all">All platforms</button><button class="chip" data-family="KIDS">KIDS</button><button class="chip" data-family="Synergy">Synergy</button><button class="chip" data-family="DHS Assessments">DHS Assessments</button><button class="chip" data-family="DHS Applications">DHS Applications</button></div>
+  </div>
 
-  <section class="block">
-    <h2>Start with what you're doing</h2>
-    <p class="sub">Common tasks across the most-used tools.</p>
-    <div class="tasks"><a class="task" href="ansa-landing.html">Complete a CANS or ANSA assessment <span class="arr">→</span></a><a class="task" href="ansa-landing.html">Find or register a client <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/">Submit a claim or invoice <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/">Report a critical incident <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/">Do a 302 petition <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Manage a housing enrollment <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Document a placement <span class="arr">→</span></a><a class="task" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Record reentry program outcomes <span class="arr">→</span></a></div>
-  </section>
+  <nav class="areanav" aria-label="Program areas"><a class="areapill" href="#cw">Child welfare &amp; youth</a><a class="areapill" href="#bh">Behavioral health</a><a class="areapill" href="#as">Assessments</a><a class="areapill" href="#ho">Housing &amp; homelessness</a><a class="areapill" href="#jr">Justice &amp; reentry</a><a class="areapill" href="#fi">Fiscal &amp; claims</a><a class="areapill" href="#ss">Self-sufficiency &amp; family support</a><a class="areapill" href="#xp">Cross-program &amp; client records</a></nav>
 
-  <section class="block">
-    <h2>Or pick your program area</h2>
-    <p class="sub">Filters the tool list below to what your team uses.</p>
-    <div class="progs"><button class="prog" data-prog="Child welfare &amp; youth">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg>
-      <span>Child welfare &amp; youth</span></button><button class="prog" data-prog="Behavioral health">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.7-7 10-7 10Z"/></svg>
-      <span>Behavioral health</span></button><button class="prog" data-prog="Housing &amp; homelessness">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></svg>
-      <span>Housing &amp; homelessness</span></button><button class="prog" data-prog="Justice &amp; reentry">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 7v6c0 4 3.4 7 8 8 4.6-1 8-4 8-8V7Z"/></svg>
-      <span>Justice &amp; reentry</span></button><button class="prog" data-prog="Fiscal &amp; claims">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      <span>Fiscal &amp; claims</span></button><button class="prog" data-prog="Assessments">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      <span>Assessments</span></button></div>
-  </section>
-
-  <section class="block" id="tools">
-    <div class="toolbar">
-      <h2 style="margin:0">Browse all tools</h2>
-      <div class="chips"><button class="chip" data-family="KIDS">KIDS</button><button class="chip" data-family="Synergy">Synergy</button><button class="chip" data-family="DHS Assessments">DHS Assessments</button><button class="chip" data-family="DHS Applications">DHS Applications</button><button class="clearx" id="clear">Clear filters</button></div>
-    </div>
-    <div class="toolgrid" id="grid"><a class="tool" href="ansa-landing.html" data-family="DHS Assessments" data-progs="Behavioral health|Assessments" data-name="ansa">
-      <div class="trow"><span class="tname">ANSA</span><span class="tcount">8</span></div>
-      <p class="tdesc">Document the Adult Needs &amp; Strengths Assessment.</p>
-      <span class="tfam">DHS Assessments</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/" data-family="DHS Assessments" data-progs="Behavioral health|Assessments" data-name="cans">
-      <div class="trow"><span class="tname">CANS</span><span class="tcount">25</span></div>
-      <p class="tdesc">Document the Child &amp; Adolescent Needs &amp; Strengths Assessment.</p>
-      <span class="tfam">DHS Assessments</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/" data-family="DHS Applications" data-progs="Fiscal &amp; claims" data-name="cips">
-      <div class="trow"><span class="tname">CIPS</span><span class="tcount">18</span></div>
-      <p class="tdesc">Client demographics, services rendered and claims.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/" data-family="DHS Applications" data-progs="" data-name="clientpath">
-      <div class="trow"><span class="tname">ClientPath</span><span class="tcount">3</span></div>
-      <p class="tdesc">Manage clients, referrals and services.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientview/" data-family="DHS Applications" data-progs="" data-name="clientview">
-      <div class="trow"><span class="tname">ClientView</span><span class="tcount">3</span></div>
-      <p class="tdesc">Read-only view of a client&#x27;s DHS involvement.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="courts">
-      <div class="trow"><span class="tname">Courts</span><span class="tcount">16</span></div>
-      <p class="tdesc">Client search, court history and documents for court roles.</p>
-      <span class="tfam">KIDS</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/" data-family="Synergy" data-progs="" data-name="dhs self-sufficiency">
-      <div class="trow"><span class="tname">DHS Self-Sufficiency</span><span class="tcount">29</span></div>
-      <p class="tdesc">Case and referral documentation for the Self-Sufficiency Program.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/" data-family="Synergy" data-progs="Behavioral health" data-name="dragonfly">
-      <div class="trow"><span class="tname">Dragonfly</span><span class="tcount">16</span></div>
-      <p class="tdesc">Consumer info, referrals and technical-assistance tracking.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/" data-family="DHS Assessments" data-progs="Assessments" data-name="fast">
-      <div class="trow"><span class="tname">FAST</span><span class="tcount">4</span></div>
-      <p class="tdesc">View and report on Family Advocacy &amp; Support Tool assessments.</p>
-      <span class="tfam">DHS Assessments</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="family support centers">
-      <div class="trow"><span class="tname">Family Support Centers</span><span class="tcount">25</span></div>
-      <p class="tdesc">Case, group-event and assessment documentation.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/" data-family="DHS Applications" data-progs="Housing &amp; homelessness" data-name="hmis">
-      <div class="trow"><span class="tname">HMIS</span><span class="tcount">21</span></div>
-      <p class="tdesc">Housing enrollments, referrals, units and reporting.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/" data-family="DHS Applications" data-progs="Behavioral health" data-name="ires">
-      <div class="trow"><span class="tname">IRES</span><span class="tcount">3</span></div>
-      <p class="tdesc">Search, create and transfer 302 petitions.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/" data-family="Synergy" data-progs="Child welfare &amp; youth|Behavioral health" data-name="independent living">
-      <div class="trow"><span class="tname">Independent Living</span><span class="tcount">26</span></div>
-      <p class="tdesc">Youth transition plans, contacts and IL stipends.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/integrated-monitoring-tool/" data-family="DHS Applications" data-progs="" data-name="integrated monitoring tool">
-      <div class="trow"><span class="tname">Integrated Monitoring Tool</span><span class="tcount">1</span></div>
-      <p class="tdesc">Provider monitoring overview.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="integration and teaming meeting">
-      <div class="trow"><span class="tname">Integration and Teaming Meeting</span><span class="tcount">12</span></div>
-      <p class="tdesc">Teaming meetings, placement history and referrals.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/" data-family="DHS Applications" data-progs="Justice &amp; reentry" data-name="jail collaborative">
-      <div class="trow"><span class="tname">Jail Collaborative</span><span class="tcount">33</span></div>
-      <p class="tdesc">Reentry intake, program outcomes and reporting.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="kids provider">
-      <div class="trow"><span class="tname">KIDS Provider</span><span class="tcount">57</span></div>
-      <p class="tdesc">Placement, services, fiscal and client health for child-welfare providers.</p>
-      <span class="tfam">KIDS</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/kidstoo-provider/" data-family="KIDS" data-progs="Child welfare &amp; youth" data-name="kidstoo provider">
-      <div class="trow"><span class="tname">KIDSTOO Provider</span><span class="tcount">8</span></div>
-      <p class="tdesc">Family finding, diligent search and document tracking.</p>
-      <span class="tfam">KIDS</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/" data-family="Synergy" data-progs="Behavioral health|Housing &amp; homelessness" data-name="mh residential">
-      <div class="trow"><span class="tname">MH Residential</span><span class="tcount">36</span></div>
-      <p class="tdesc">Residential referrals, case records and bed management.</p>
-      <span class="tfam">Synergy</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/" data-family="DHS Applications" data-progs="Fiscal &amp; claims" data-name="mper">
-      <div class="trow"><span class="tname">MPER</span><span class="tcount">7</span></div>
-      <p class="tdesc">Submit program-funded claims; manage contacts and facilities.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/" data-family="DHS Applications" data-progs="Behavioral health" data-name="obh critical incident reporting">
-      <div class="trow"><span class="tname">OBH Critical Incident Reporting</span><span class="tcount">5</span></div>
-      <p class="tdesc">Report critical incidents within 24 hours.</p>
-      <span class="tfam">DHS Applications</span>
-    </a><a class="tool" href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/" data-family="Synergy" data-progs="Child welfare &amp; youth" data-name="youth support partners">
-      <div class="trow"><span class="tname">Youth Support Partners</span><span class="tcount">17</span></div>
-      <p class="tdesc">Case plans, contacts and tracking for youth support.</p>
-      <span class="tfam">Synergy</span>
-    </a></div>
-    <p class="nores" id="nores">No tools match those filters. <button class="clearx" onclick="clearAll()">Clear filters</button></p>
-  </section>
+  <section class="area" id="cw" data-area="Child welfare &amp; youth">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5ZM6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span>
+        <div><h2>Child welfare &amp; youth</h2><span class="acount">7 tools · 161 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="KIDS" data-text="kids provider placement, services, fiscal and client health for child-welfare providers. kids reference, faqs &amp; training referrals &amp; placement case &amp; service documentation plans &amp; meetings fiscal, claims &amp; invoicing supervisor &amp; approvals reports &amp; history">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">KIDS Provider</span><span class="tdesc">Placement, services, fiscal and client health for child-welfare providers.</span></span>
+        <span class="tright"><span class="tcount">57<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Open KIDS Provider guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the KIDS Provider page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Reference, FAQs &amp; training</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Fiscal, claims &amp; invoicing</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kids-provider/">Supervisor &amp; approvals</a></div></div>
+      </div>
+    </details><details class="tool" data-family="KIDS" data-text="kidstoo provider family finding, diligent search and document tracking. kids case &amp; service documentation">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">KIDSTOO Provider</span><span class="tdesc">Family finding, diligent search and document tracking.</span></span>
+        <span class="tright"><span class="tcount">8<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/kidstoo-provider/">Open KIDSTOO Provider guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the KIDSTOO Provider page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/kidstoo-provider/">Case &amp; service documentation</a></div></div>
+      </div>
+    </details><details class="tool" data-family="KIDS" data-text="courts client search, court history and documents for court roles. kids case &amp; service documentation find &amp; register a client reports &amp; history">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Courts</span><span class="tdesc">Client search, court history and documents for court roles.</span></span>
+        <span class="tright"><span class="tcount">16<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/">Open Courts guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Courts page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/">Find &amp; register a client</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/courts/">Reports &amp; history</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="independent living youth transition plans, contacts and il stipends. synergy case &amp; service documentation plans &amp; meetings reports &amp; history referrals &amp; placement admin &amp; configuration supervisor &amp; approvals">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Independent Living</span><span class="tdesc">Youth transition plans, contacts and IL stipends.</span></span>
+        <span class="tright"><span class="tcount">26<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Open Independent Living guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Independent Living page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Admin &amp; configuration</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/independent-living/">Supervisor &amp; approvals</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="integration and teaming meeting teaming meetings, placement history and referrals. synergy case &amp; service documentation reports &amp; history plans &amp; meetings referrals &amp; placement document an assessment admin &amp; configuration">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Integration and Teaming Meeting</span><span class="tdesc">Teaming meetings, placement history and referrals.</span></span>
+        <span class="tright"><span class="tcount">12<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Open Integration and Teaming Meeting guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Integration and Teaming Meeting page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integration-and-teaming-meeting/">Admin &amp; configuration</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="youth support partners case plans, contacts and tracking for youth support. synergy case &amp; service documentation plans &amp; meetings enrollment &amp; households document an assessment supervisor &amp; approvals admin &amp; configuration">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Youth Support Partners</span><span class="tdesc">Case plans, contacts and tracking for youth support.</span></span>
+        <span class="tright"><span class="tcount">17<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Open Youth Support Partners guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Youth Support Partners page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Supervisor &amp; approvals</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/youth-support-partners/">Admin &amp; configuration</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="family support centers case, group-event and assessment documentation. synergy case &amp; service documentation plans &amp; meetings enrollment &amp; households document an assessment supervisor &amp; approvals reports &amp; history admin &amp; configuration fiscal, claims &amp; invoicing">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Family Support Centers</span><span class="tdesc">Case, group-event and assessment documentation.</span></span>
+        <span class="tright"><span class="tcount">25<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Open Family Support Centers guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Family Support Centers page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Supervisor &amp; approvals</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Reports &amp; history</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="bh" data-area="Behavioral health">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.7-7 10-7 10Z"/></svg></span>
+        <div><h2>Behavioral health</h2><span class="acount">6 tools · 93 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Applications" data-text="obh critical incident reporting report critical incidents within 24 hours. dhs applications reports &amp; history reference, faqs &amp; training">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">OBH Critical Incident Reporting</span><span class="tdesc">Report critical incidents within 24 hours.</span></span>
+        <span class="tright"><span class="tcount">5<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/">Open OBH Critical Incident Reporting guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the OBH Critical Incident Reporting page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/behavioral-health-critical-incident/">Reference, FAQs &amp; training</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Applications" data-text="ires search, create and transfer 302 petitions. dhs applications 302 petitions">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">IRES</span><span class="tdesc">Search, create and transfer 302 petitions.</span></span>
+        <span class="tright"><span class="tcount">3<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/">Open IRES guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the IRES page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/ires/">302 petitions</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="dragonfly consumer info, referrals and technical-assistance tracking. synergy case &amp; service documentation referrals &amp; placement plans &amp; meetings">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Dragonfly</span><span class="tdesc">Consumer info, referrals and technical-assistance tracking.</span></span>
+        <span class="tright"><span class="tcount">16<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/">Open Dragonfly guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Dragonfly page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dragonfly/">Plans &amp; meetings</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="mh residential residential referrals, case records and bed management. synergy referrals &amp; placement case &amp; service documentation reports &amp; history enrollment &amp; households admin &amp; configuration plans &amp; meetings">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">MH Residential</span><span class="tdesc">Residential referrals, case records and bed management.</span></span>
+        <span class="tright"><span class="tcount">36<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Open MH Residential guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the MH Residential page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Admin &amp; configuration</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Plans &amp; meetings</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Assessments" data-text="cans document the child &amp; adolescent needs &amp; strengths assessment. dhs assessments getting access &amp; signing in document an assessment referrals &amp; placement supervisor &amp; approvals reports &amp; history find &amp; register a client">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">CANS</span><span class="tdesc">Document the Child &amp; Adolescent Needs &amp; Strengths Assessment.</span></span>
+        <span class="tright"><span class="tcount">25<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Open CANS guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the CANS page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Getting access &amp; signing in</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Supervisor &amp; approvals</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Find &amp; register a client</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Assessments" data-text="ansa document the adult needs &amp; strengths assessment. dhs assessments document an assessment find &amp; register a client">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">ANSA</span><span class="tdesc">Document the Adult Needs &amp; Strengths Assessment.</span></span>
+        <span class="tright"><span class="tcount">8<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="ansa-landing.html">Open ANSA guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the ANSA page</span><div class="jlinks"><a href="ansa-landing.html#get-started">Get started</a><a href="ansa-landing.html#find-register">Find &amp; register a client</a><a href="ansa-landing.html#document-assessment">Document an assessment</a><a href="ansa-landing.html#reports">Reports &amp; history</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="as" data-area="Assessments">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        <div><h2>Assessments</h2><span class="acount">3 tools · 37 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Assessments" data-text="ansa document the adult needs &amp; strengths assessment. dhs assessments document an assessment find &amp; register a client">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">ANSA</span><span class="tdesc">Document the Adult Needs &amp; Strengths Assessment.</span></span>
+        <span class="tright"><span class="tcount">8<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="ansa-landing.html">Open ANSA guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the ANSA page</span><div class="jlinks"><a href="ansa-landing.html#get-started">Get started</a><a href="ansa-landing.html#find-register">Find &amp; register a client</a><a href="ansa-landing.html#document-assessment">Document an assessment</a><a href="ansa-landing.html#reports">Reports &amp; history</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Assessments" data-text="cans document the child &amp; adolescent needs &amp; strengths assessment. dhs assessments getting access &amp; signing in document an assessment referrals &amp; placement supervisor &amp; approvals reports &amp; history find &amp; register a client">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">CANS</span><span class="tdesc">Document the Child &amp; Adolescent Needs &amp; Strengths Assessment.</span></span>
+        <span class="tright"><span class="tcount">25<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Open CANS guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the CANS page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Getting access &amp; signing in</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Supervisor &amp; approvals</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cans/">Find &amp; register a client</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Assessments" data-text="fast view and report on family advocacy &amp; support tool assessments. dhs assessments getting access &amp; signing in document an assessment reports &amp; history">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">FAST</span><span class="tdesc">View and report on Family Advocacy &amp; Support Tool assessments.</span></span>
+        <span class="tright"><span class="tcount">4<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/">Open FAST guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the FAST page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/">Getting access &amp; signing in</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/fast/">Reports &amp; history</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="ho" data-area="Housing &amp; homelessness">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></svg></span>
+        <div><h2>Housing &amp; homelessness</h2><span class="acount">2 tools · 57 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Applications" data-text="hmis housing enrollments, referrals, units and reporting. dhs applications referrals &amp; placement document an assessment enrollment &amp; households case &amp; service documentation reference, faqs &amp; training fiscal, claims &amp; invoicing reports &amp; history find &amp; register a client">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">HMIS</span><span class="tdesc">Housing enrollments, referrals, units and reporting.</span></span>
+        <span class="tright"><span class="tcount">21<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Open HMIS guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the HMIS page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Reference, FAQs &amp; training</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/hmis/">Fiscal, claims &amp; invoicing</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="mh residential residential referrals, case records and bed management. synergy referrals &amp; placement case &amp; service documentation reports &amp; history enrollment &amp; households admin &amp; configuration plans &amp; meetings">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">MH Residential</span><span class="tdesc">Residential referrals, case records and bed management.</span></span>
+        <span class="tright"><span class="tcount">36<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Open MH Residential guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the MH Residential page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Admin &amp; configuration</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mh-residential/">Plans &amp; meetings</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="jr" data-area="Justice &amp; reentry">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 7v6c0 4 3.4 7 8 8 4.6-1 8-4 8-8V7Z"/></svg></span>
+        <div><h2>Justice &amp; reentry</h2><span class="acount">1 tools · 33 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Applications" data-text="jail collaborative reentry intake, program outcomes and reporting. dhs applications case &amp; service documentation reference, faqs &amp; training reports &amp; history program outcomes enrollment &amp; households">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Jail Collaborative</span><span class="tdesc">Reentry intake, program outcomes and reporting.</span></span>
+        <span class="tright"><span class="tcount">33<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Open Jail Collaborative guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Jail Collaborative page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Reference, FAQs &amp; training</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Reports &amp; history</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Program outcomes</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/jail-collaborative/">Enrollment &amp; households</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="fi" data-area="Fiscal &amp; claims">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <div><h2>Fiscal &amp; claims</h2><span class="acount">2 tools · 25 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Applications" data-text="mper submit program-funded claims; manage contacts and facilities. dhs applications fiscal, claims &amp; invoicing case &amp; service documentation">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">MPER</span><span class="tdesc">Submit program-funded claims; manage contacts and facilities.</span></span>
+        <span class="tright"><span class="tcount">7<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/">Open MPER guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the MPER page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/">Fiscal, claims &amp; invoicing</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/mper/">Case &amp; service documentation</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Applications" data-text="cips client demographics, services rendered and claims. dhs applications case &amp; service documentation fiscal, claims &amp; invoicing find &amp; register a client document an assessment">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">CIPS</span><span class="tdesc">Client demographics, services rendered and claims.</span></span>
+        <span class="tright"><span class="tcount">18<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/">Open CIPS guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the CIPS page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/">Fiscal, claims &amp; invoicing</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/">Find &amp; register a client</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/cips/">Document an assessment</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="ss" data-area="Self-sufficiency &amp; family support">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 7a4 4 0 1 0 .01 0M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M17 11l2 2 4-4"/></svg></span>
+        <div><h2>Self-sufficiency &amp; family support</h2><span class="acount">2 tools · 54 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="Synergy" data-text="dhs self-sufficiency case and referral documentation for the self-sufficiency program. synergy case &amp; service documentation reference, faqs &amp; training enrollment &amp; households document an assessment referrals &amp; placement supervisor &amp; approvals">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">DHS Self-Sufficiency</span><span class="tdesc">Case and referral documentation for the Self-Sufficiency Program.</span></span>
+        <span class="tright"><span class="tcount">29<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Open DHS Self-Sufficiency guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the DHS Self-Sufficiency page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Reference, FAQs &amp; training</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Referrals &amp; placement</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/dhs-self-sufficiency/">Supervisor &amp; approvals</a></div></div>
+      </div>
+    </details><details class="tool" data-family="Synergy" data-text="family support centers case, group-event and assessment documentation. synergy case &amp; service documentation plans &amp; meetings enrollment &amp; households document an assessment supervisor &amp; approvals reports &amp; history admin &amp; configuration fiscal, claims &amp; invoicing">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Family Support Centers</span><span class="tdesc">Case, group-event and assessment documentation.</span></span>
+        <span class="tright"><span class="tcount">25<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Open Family Support Centers guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Family Support Centers page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Plans &amp; meetings</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Enrollment &amp; households</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Document an assessment</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Supervisor &amp; approvals</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/family-support-centers/">Reports &amp; history</a></div></div>
+      </div>
+    </details></div>
+    </section><section class="area" id="xp" data-area="Cross-program &amp; client records">
+      <div class="areahead">
+        <span class="aicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></span>
+        <div><h2>Cross-program &amp; client records</h2><span class="acount">3 tools · 7 guides</span></div>
+      </div>
+      <div class="toolgrid"><details class="tool" data-family="DHS Applications" data-text="clientview read-only view of a client&#x27;s dhs involvement. dhs applications reference, faqs &amp; training">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">ClientView</span><span class="tdesc">Read-only view of a client&#x27;s DHS involvement.</span></span>
+        <span class="tright"><span class="tcount">3<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientview/">Open ClientView guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the ClientView page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/clientview/">Reference, FAQs &amp; training</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Applications" data-text="clientpath manage clients, referrals and services. dhs applications case &amp; service documentation referrals &amp; placement">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">ClientPath</span><span class="tdesc">Manage clients, referrals and services.</span></span>
+        <span class="tright"><span class="tcount">3<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/">Open ClientPath guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the ClientPath page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/">Case &amp; service documentation</a><a href="https://dhsapplicationsupport.alleghenycounty.us/application/clientpath/">Referrals &amp; placement</a></div></div>
+      </div>
+    </details><details class="tool" data-family="DHS Applications" data-text="integrated monitoring tool provider monitoring overview. dhs applications reference, faqs &amp; training">
+      <summary class="thead">
+        <span class="tmain"><span class="tname">Integrated Monitoring Tool</span><span class="tdesc">Provider monitoring overview.</span></span>
+        <span class="tright"><span class="tcount">1<small>guides</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+      </summary>
+      <div class="topen">
+        <a class="btn primary" href="https://dhsapplicationsupport.alleghenycounty.us/application/integrated-monitoring-tool/">Open Integrated Monitoring Tool guides →</a>
+        <div class="jump"><span class="jlab">Jump to a task on the Integrated Monitoring Tool page</span><div class="jlinks"><a href="https://dhsapplicationsupport.alleghenycounty.us/application/integrated-monitoring-tool/">Reference, FAQs &amp; training</a></div></div>
+      </div>
+    </details></div>
+    </section>
+  <p class="nores" id="nores">No tools match your search and filters. <a href="#" onclick="clearAll();return false;">Clear everything</a></p>
 </main>
 
 <footer><div class="wrap">
-  <div class="meta"><b>DHS Application Support</b> · 22 tools · job aids for caseworkers and community providers<br>Allegheny County Department of Human Services</div>
+  <div class="meta"><b>DHS Application Support</b> · 22 tools · guides for caseworkers and community providers<br>Allegheny County Department of Human Services</div>
   <div class="flinks"><a href="dhs-sitemap.html">Site map</a><a href="#">Accessing apps</a><a href="#">Email service desk</a></div>
 </div></footer>
 
 <script>
-  const grid=document.getElementById('grid'), tools=[...grid.querySelectorAll('.tool')];
-  let fam=null, prog=null, q="";
+  const tools=[...document.querySelectorAll('.tool')];
+  const areas=[...document.querySelectorAll('.area')];
+  let fam="all", q="";
   function apply(){
-    let shown=0;
     tools.forEach(t=>{
-      const okF=!fam||t.dataset.family===fam;
-      const okP=!prog||(t.dataset.progs||"").split('|').includes(prog);
-      const okQ=!q||t.dataset.name.includes(q)||t.textContent.toLowerCase().includes(q);
-      const show=okF&&okP&&okQ; t.classList.toggle('hide',!show); if(show)shown++;
+      const okF=fam==="all"||t.dataset.family===fam;
+      const okQ=!q||t.dataset.text.includes(q);
+      t.classList.toggle('hide',!(okF&&okQ));
     });
-    document.getElementById('nores').style.display=shown?'none':'block';
+    let anyShown=false;
+    areas.forEach(a=>{
+      const shown=[...a.querySelectorAll('.tool')].some(t=>!t.classList.contains('hide'));
+      a.classList.toggle('hide',!shown); if(shown)anyShown=true;
+    });
+    document.getElementById('nores').style.display=anyShown?'none':'block';
+    document.querySelectorAll('.areapill').forEach(p=>{
+      const tgt=document.querySelector(p.getAttribute('href'));
+      p.style.display=(tgt&&tgt.classList.contains('hide'))?'none':'';
+    });
   }
   document.querySelectorAll('.chip[data-family]').forEach(c=>c.onclick=()=>{
-    const v=c.dataset.family; fam=fam===v?null:v;
-    document.querySelectorAll('.chip[data-family]').forEach(x=>x.classList.toggle('active',x.dataset.family===fam));
+    fam=c.dataset.family;
+    document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===c));
     apply();
   });
-  document.querySelectorAll('.prog').forEach(p=>p.onclick=()=>{
-    const v=p.dataset.prog; prog=prog===v?null:v;
-    document.querySelectorAll('.prog').forEach(x=>x.classList.toggle('active',x.dataset.prog===prog));
-    document.getElementById('tools').scrollIntoView({behavior:'smooth'}); apply();
-  });
   document.getElementById('q').addEventListener('input',e=>{q=e.target.value.toLowerCase().trim();apply();});
-  window.clearAll=()=>{fam=null;prog=null;q="";document.getElementById('q').value="";
-    document.querySelectorAll('.active').forEach(x=>x.classList.remove('active'));apply();};
-  document.getElementById('clear').onclick=clearAll;
+  window.clearAll=()=>{fam="all";q="";document.getElementById('q').value="";
+    document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.family==='all'));apply();};
 </script>
 </body></html>
